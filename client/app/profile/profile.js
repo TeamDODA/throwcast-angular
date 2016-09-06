@@ -11,10 +11,5 @@ angular.module('throwcast.profile', ['ngRoute'])
     templateUrl: 'app/station/podcaststation.html',
     controller: 'StationDetailController',
     authenticate: true
-  })
-  .when('/playlist/:id', {
-    templateUrl: 'app/playlist/playlist.html',
-    controller: 'PlaylistDetailController',
-    authenticate: true
   });
 });
