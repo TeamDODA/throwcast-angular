@@ -1,6 +1,6 @@
 function Nav() {
   return {
-    templateUrl: '/app/components/nav/nav.html',
+    templateUrl: '/components/nav/nav.html',
     controller: 'NavController'
   };
 }
