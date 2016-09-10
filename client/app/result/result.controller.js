@@ -1,5 +1,7 @@
-function ResultController ($scope, SearchService) {
-  $scope.results = SearchService;
-}
+var module = angular.module('tc.result.controller', [
+  'tc.search.service',
+]);
 
-angular.module('throwcast.result').controller('ResultController', ResultController);
+module.controller('ResultController', function ($scope, Search) {
+  $scope.results = Search;
+});

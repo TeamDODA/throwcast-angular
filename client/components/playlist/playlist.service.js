@@ -1,6 +1,6 @@
-angular.module('throwcast.playlist')
+var module = angular.module('tc.playlist.service', []);
 
-.factory('PlaylistService', function ($http, API_BASE) {
+module.factory('Playlist', function ($http, API_BASE) {
   var data = {};
   return {
     createPlaylist: function (playlist) {

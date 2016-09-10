@@ -1,14 +1,14 @@
-var module = angular.module('tc.podcast.controller', [
+var module = angular.module('tc.station.detail.controller', [
   'tc.playlist.service',
   'tc.podcast.service',
+  'tc.station.service',
   'tc.user.service',
 ]);
 
-module.controller('PodcastController', function ($scope, Podcast, User, Playlist) {
+module.controller('StationDetailController', function ($scope, $routeParams, Playlist, Podcast, Station, User) {
   $scope.defaultImage = 'http://myndset.com/wp-content/uploads/2015/10/podcast-image.jpg';
-  Podcast.getAllPodcasts().then(function () {
-    $scope.podcasts = Podcast.data.podcasts;
-  });
+  $scope.selected = Station.data;
+  Station.getStationPodcast($routeParams.id);
 
   User.getUserAsync().then(function (user) {
     $scope.user = user;

@@ -1,1 +1,3 @@
-angular.module('throwcast.nav', []);
+angular.module('tc.nav', [
+  'tc.nav.directive',
+]);

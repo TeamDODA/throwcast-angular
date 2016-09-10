@@ -1,6 +1,6 @@
-angular.module('throwcast.podcast')
+var module = angular.module('tc.podcast.service', []);
 
-.factory('PodcastService', function ($http, API_BASE) {
+module.factory('Podcast', function ($http, API_BASE) {
   var data = {};
   return {
     getAllPodcasts: function () {

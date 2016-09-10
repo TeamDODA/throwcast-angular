@@ -1,10 +1,10 @@
-angular.module('throwcast.stations')
+var module = angular.module('tc.station.service', []);
 
-.factory('StationsService', function ($http, API_BASE) {
+module.factory('Station', function ($http, API_BASE) {
   var data = {};
   return {
     getStations: function () {
-      return $http.get(API_BASE + '/api/stations/').then( function (res) {
+      return $http.get(API_BASE + '/api/stations/').then(function (res) {
         data.stations = res;
       });
     },

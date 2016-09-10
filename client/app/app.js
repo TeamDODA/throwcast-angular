@@ -1,17 +1,17 @@
 'use strict';
 
 var app = angular.module('throwcast', [
-  'throwcast.auth',
-  'throwcast.constants',
-  'throwcast.nav',
-  'throwcast.podcast',
-  'throwcast.popular',
-  'throwcast.player',
-  'throwcast.playlist',
-  'throwcast.profile',
-  'throwcast.result',
-  'throwcast.search',
-  'throwcast.stations',
+  'tc.account',
+  'tc.auth',
+  'tc.constants',
+  'tc.home',
+  'tc.nav',
+  'tc.player.controller',
+  'tc.playlist',
+  'tc.podcast',
+  'tc.profile',
+  'tc.result',
+  'tc.station',
   'ngRoute'
 ]);
 
@@ -22,9 +22,9 @@ app.config(function($routeProvider, $sceProvider) {
   $sceProvider.enabled(false);
 });
 
-app.run(function($rootScope, $location, authService) {
+app.run(function($rootScope, $location, Auth) {
   $rootScope.$on('$routeChangeStart', function(evt, next, current) {
-    if (next.$$route && next.$$route.authenticate && !authService.isAuth()) {
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       evt.preventDefault();
       $location.path('/signin');
     }

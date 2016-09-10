@@ -1,15 +1,13 @@
-angular.module('throwcast.profile', ['ngRoute'])
+var module = angular.module('tc.profile', [
+  'tc.profile.controller',
+  'ngRoute',
+]);
 
-.config(function ($routeProvider) {
+module.config(function ($routeProvider) {
   $routeProvider
-  .when('/profile', {
-    templateUrl: 'app/profile/profile.html',
-    controller: 'ProfileController',
-    authenticate: true
-  })
-  .when('/profile/:id', {
-    templateUrl: 'app/station/podcaststation.html',
-    controller: 'StationDetailController',
-    authenticate: true
-  });
+    .when('/profile', {
+      templateUrl: 'app/profile/profile.html',
+      controller: 'ProfileController',
+      authenticate: true
+    });
 });

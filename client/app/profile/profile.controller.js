@@ -1,36 +1,40 @@
-angular.module('throwcast.profile')
+var module = angular.module('tc.profile.controller', [
+  'tc.playlist.service',
+  'tc.user.service',
+  'tc.user.playlist.service',
+]);
 
-.controller('ProfileController', function ($scope, UserPlaylistService, userService, PlaylistService) {
+module.controller('ProfileController', function ($scope, Playlist, UserPlaylist, User) {
   $scope.defaultImage = 'http://myndset.com/wp-content/uploads/2015/10/podcast-image.jpg';
-  $scope.data = PlaylistService.data;
+  $scope.data = Playlist.data;
   $scope.playlist = {};
-  $scope.UserPlaylistService = UserPlaylistService.data;
+  $scope.UserPlaylist = UserPlaylist.data;
 
-  userService.getUserAsync().then(function (user) {
+  User.getUserAsync().then(function (user) {
     $scope.user = user;
   });
-  PlaylistService.getAllPlaylist();
+  Playlist.getAllPlaylist();
 
-  UserPlaylistService.getUserPlaylist();
+  UserPlaylist.getUserPlaylist();
 
   $scope.getSpecificPlaylist = function (playlistId) {
-    PlaylistService.getSpecificPlaylist(playlistId).then(function () {
-      $scope.specificPlaylist = PlaylistService.data.specificPlaylist;
+    Playlist.getSpecificPlaylist(playlistId).then(function () {
+      $scope.specificPlaylist = Playlist.data.specificPlaylist;
     });
   };
 
   $scope.createPlaylist = function () {
-    UserPlaylistService.createPlaylist($scope.playlist);
+    UserPlaylist.createPlaylist($scope.playlist);
   };
 
   $scope.deletePlaylist = function (index, playlistId) {
-    UserPlaylistService.deletePlaylist(index, playlistId);
+    UserPlaylist.deletePlaylist(index, playlistId);
   };
 
   $scope.unsubscribe = function (index) {
     $scope.user.subscriptions.splice(index, 1);
-    userService.updateSubscribtion($scope.user.subscriptions).then(function () {
-      $scope.user.subscriptions = userService.data.user.subscriptions;
+    User.updateSubscribtion($scope.user.subscriptions).then(function () {
+      $scope.user.subscriptions = User.data.user.subscriptions;
     });
   };
 });

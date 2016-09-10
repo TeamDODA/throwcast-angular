@@ -10,13 +10,13 @@
     </div>
 
     <h1>My Playlists</h1>
-    <div class="mainDiv" ng-repeat="playlist in UserPlaylistService.usersPlaylist">
+    <div class="mainDiv" ng-repeat="playlist in UserPlaylist.usersPlaylist">
       <ul class="list-group">
         <a href="/#/playlist/{{playlist._id}}">
           <li class="list-group-item"><strong>Playlist Title:</strong> <u>{{playlist.title}}</u></li>
         </a>
       </ul>
-      <button class='btn btn-primary' ng-click="deletePlaylist($index, UserPlaylistService.usersPlaylist[$index]._id)">
+      <button class='btn btn-primary' ng-click="deletePlaylist($index, UserPlaylist.usersPlaylist[$index]._id)">
         Delete Playlist
       </button>
     </div>

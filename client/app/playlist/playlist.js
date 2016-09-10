@@ -1,15 +1,19 @@
-angular.module('throwcast.playlist', ['ngRoute'])
+var module = angular.module('tc.playlist', [
+  'tc.playlist.controller',
+  'tc.playlist.detail.controller',
+  'ngRoute',
+]);
 
-.config(function ($routeProvider) {
+module.config(function ($routeProvider) {
   $routeProvider
-  .when('/playlist/', {
-    templateUrl: 'app/playlist/playlist.html',
-    controller: 'PlaylistController',
-    authenticate: true
-  })
-  .when('/playlist/:id', {
-    templateUrl: 'app/playlist/playlistdetails.html',
-    controller: 'PlaylistDetailController',
-    authenticate: true
-  });
+    .when('/playlist/', {
+      templateUrl: 'app/playlist/playlist.html',
+      controller: 'PlaylistController',
+      authenticate: true
+    })
+    .when('/playlist/:id', {
+      templateUrl: 'app/playlist/detail/playlist.detail.html',
+      controller: 'PlaylistDetailController',
+      authenticate: true
+    });
 });
