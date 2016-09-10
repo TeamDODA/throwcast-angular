@@ -2,13 +2,17 @@
 <html>
   <head>
     <title>Throwcast</title>
+    <!-- build:css(client) css/vendor.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" />
     <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(client) css/styles.min.css -->
     <!-- injector:css -->
     <link rel="stylesheet" href="style.css">
     <!-- endinjector -->
+    <!-- endbuild -->
   </head>
   <body ng-app="throwcast">
     <tc-nav></tc-nav>
@@ -17,12 +21,15 @@
       <audio id="audio" ng-src="{{podcast.selected.enclosure.url}}" controls autoplay></audio>
     </div>
     <div ng-view id="view"></div>
+    <!-- build:js(client) js/vendor.min.js -->
     <!-- bower:js -->
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({client,.tmp}) js/bundle.min.js -->
     <!-- inject:js -->
     <script src="components/search/search.js"></script>
     <script src="components/search/search.service.js"></script>
@@ -56,5 +63,9 @@
     <script src="app/constants.js"></script>
     <script src="app/app.js"></script>
     <!-- endinject -->
+    <!-- inject:partial -->
+    <script src="template-cache.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
   </body>
 </html>

@@ -39,3 +39,4 @@ client/lib
 
 # throwcast-angular
 dist
+.tmp
