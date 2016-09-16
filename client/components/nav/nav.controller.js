@@ -11,6 +11,7 @@ module.controller('NavController', function NavController($scope, $location, Aut
 
   $scope.logout = function () {
     Auth.logout();
+    $location.path('/');
   };
 
   $scope.getSearchResults = function () {
