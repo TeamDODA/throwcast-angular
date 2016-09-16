@@ -145,7 +145,8 @@ gulp.task('imagemin', () => {
 gulp.task('copy:extras', () => {
   return gulp.src([
     `${paths.client}/robots.txt`,
-    `${paths.client}/.static`
+    `${paths.client}/.static`,
+    `${paths.client}/nginx.conf.erb`,
   ], { dot: true })
     .pipe(gulp.dest(paths.dist));
 });
