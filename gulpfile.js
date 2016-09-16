@@ -116,6 +116,7 @@ gulp.task('build', cb => runSequence(
   ],
   'inject',
   'useref',
+  'imagemin',
   'copy:extras',
   cb));
 
@@ -129,6 +130,16 @@ gulp.task('useref', ['clean:dist'], () => {
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss()))
     .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('imagemin', () => {
+  return gulp.src(paths.images)
+    .pipe($.imagemin({
+      optimizationLevel: 3,
+      progessive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest(`${paths.dist}/assets/images`))
 });
 
 gulp.task('copy:extras', () => {
