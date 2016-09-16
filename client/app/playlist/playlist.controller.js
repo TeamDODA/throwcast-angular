@@ -1,12 +1,14 @@
-angular.module('throwcast.playlist')
+var module = angular.module('tc.playlist.controller', [
+  'tc.playlist.service',
+]);
 
-.controller('PlaylistController', function ($scope, PlaylistService) {
-  PlaylistService.getAllPlaylist().then(function () {
-    $scope.allPlaylist = PlaylistService.data.allPlaylist;
+module.controller('PlaylistController', function ($scope, Playlist) {
+  Playlist.getAllPlaylist().then(function () {
+    $scope.allPlaylist = Playlist.data.allPlaylist;
   });
   $scope.getSpecificPlaylist = function (playlistId) {
-    PlaylistService.getSpecificPlaylist(playlistId).then(function () {
-      $scope.specificPlaylist = PlaylistService.data.specificPlaylist;
+    Playlist.getSpecificPlaylist(playlistId).then(function () {
+      $scope.specificPlaylist = Playlist.data.specificPlaylist;
     });
   };
 });

@@ -1,10 +1,13 @@
-angular.module('throwcast.podcast', ['ngRoute'])
+var module = angular.module('tc.podcast', [
+  'tc.podcast.controller',
+  'ngRoute',
+]);
 
-.config(function ($routeProvider) {
+module.config(function ($routeProvider) {
   $routeProvider
-  .when('/podcast', {
+    .when('/podcast', {
       templateUrl: 'app/podcast/podcast.html',
       controller: 'PodcastController',
       authenticate: true
-  });
+    });
 });

@@ -1,19 +1,23 @@
-function NavController($scope, userService, authService, SearchService, $location) {
-  userService.getUserAsync().then(function (user) {
+var module = angular.module('tc.nav.controller', [
+  'tc.auth.service',
+  'tc.search.service',
+  'tc.user.service',
+]);
+
+module.controller('NavController', function NavController($scope, $location, Auth, Search, User) {
+  User.getUserAsync().then(function (user) {
     $scope.user = user;
   });
 
   $scope.logout = function () {
-    authService.logout();
+    Auth.logout();
   };
 
   $scope.getSearchResults = function () {
-    SearchService.searchPodcasts($scope.searchQuery);
-    SearchService.searchPlaylists($scope.searchQuery);
-    SearchService.searchStations($scope.searchQuery);
+    Search.searchPodcasts($scope.searchQuery);
+    Search.searchPlaylists($scope.searchQuery);
+    Search.searchStations($scope.searchQuery);
     $location.path('/results');
     $scope.searchQuery = '';
   };
-}
-
-angular.module('throwcast.nav').controller('NavController', NavController);
+});

@@ -1,6 +1,6 @@
-angular.module('throwcast.auth')
+var module = angular.module('tc.user.service', []);
 
-.factory('userService', function ($http, $q, API_BASE) {
+module.factory('User', function ($http, $q, API_BASE) {
   var data = {};
   return {
     createUser: function (userCredentials) {
@@ -11,10 +11,10 @@ angular.module('throwcast.auth')
         return $q.resolve(data.user);
       } else {
         return $http.get(API_BASE + '/api/users/me')
-        .then(function (res) {
-          data.user = res.data;
-          return res.data;
-        });
+          .then(function (res) {
+            data.user = res.data;
+            return res.data;
+          });
       }
     },
     updateSubscribtion: function (subscriptions) {

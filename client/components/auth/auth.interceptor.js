@@ -1,6 +1,6 @@
-angular.module('throwcast.auth')
+var module = angular.module('tc.auth.interceptor', []);
 
-.factory('authInterceptor', function ($q, $window, $location) {
+module.factory('authInterceptor', function ($q, $window, $location) {
   return {
     request: function (config) {
       config.headers = config.headers || {};
@@ -16,8 +16,8 @@ angular.module('throwcast.auth')
       return $q.when(response);
     }
   };
-})
+});
 
-.config(function ($httpProvider) {
+module.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 });
