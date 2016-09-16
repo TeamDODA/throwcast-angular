@@ -26,21 +26,6 @@ body {
   padding-bottom: 15px;
 }
 
-.wrapper {
-  position:absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("https://hd.unsplash.com/12/sky.JPG");
-  background-repeat:no-repeat;
-  background-size: cover;
-}
-
-.wrapper a {
-  color: white;
-}
-
 img {
   top: 0;
   display:block;
@@ -83,16 +68,6 @@ img {
   float: right;
   display: block;
   width: 40%;
-}
-
-.wrapper label {
-  color: white;
-}
-
-.input-row {
-  margin: 0 auto;
-  padding: 15px;
-  max-width: 400px;
 }
 
 h1 {
