@@ -9,11 +9,11 @@ module.factory('authInterceptor', function ($q, $window, $location) {
       }
       return config;
     },
-    response: function (response) {
-      if (response.status === 401) {
+    responseError: function (rejection) {
+      if (rejection.status === 401) {
         $location.path('/signin');
       }
-      return $q.when(response);
+      return $q.reject(rejection);
     }
   };
 });
