@@ -6,7 +6,7 @@ var module = angular.module('tc.playlist', [
 
 module.config(function ($routeProvider) {
   $routeProvider
-    .when('/playlist/', {
+    .when('/playlist', {
       templateUrl: 'app/playlist/playlist.html',
       controller: 'PlaylistController',
       authenticate: true
