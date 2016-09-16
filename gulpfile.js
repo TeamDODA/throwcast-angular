@@ -106,6 +106,7 @@ gulp.task('serve:dev', function () {
     root: [paths.client, paths.temp],
     port: 3000,
     livereload: true,
+    fallback: `${paths.client}/index.html`,
   });
 });
 
