@@ -15,10 +15,12 @@ var app = angular.module('throwcast', [
   'ngRoute'
 ]);
 
-app.config(function($routeProvider, $sceProvider) {
+app.config(function($routeProvider, $locationProvider, $sceProvider) {
   $routeProvider.otherwise({
     redirectTo: '/signin'
   });
+
+  $locationProvider.html5Mode(true);
   $sceProvider.enabled(false);
 });
 

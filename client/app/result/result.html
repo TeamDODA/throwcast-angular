@@ -26,7 +26,7 @@
   <h1>Stations Results</h1>
     <div>
       <div class="mainDiv" ng-repeat="station in results.stations">
-        <a href="/#/stations/{{station._id}}">
+        <a href="/stations/{{station._id}}">
           <img class="img-thumbnail" ng-src="{{station.image || defaultImage}}"/>
         </a>
         <ul class="list-group">
@@ -43,7 +43,7 @@
     <hr>
     <div class="mainDiv" ng-repeat="playlist in results.playlists">
       <ul class="list-group">
-        <a href="/#/playlist/{{playlist._id}}">
+        <a href="/playlist/{{playlist._id}}">
           <li class="list-group-item"><strong>Playlist Title:</strong> <u>{{playlist.title}}</u></li>
         </a>
        <li class="list-group-item"><strong>Created At:</strong> {{playlist.createdAt | date: 'mediumDate'}}</li>
