@@ -16,10 +16,6 @@ paths.views = `${paths.client}/{app,components}/**/*.html`;
 paths.mainView = `${paths.client}/index.html`;
 paths.builtPartials = `${paths.temp}/template-cache.js`;
 
-const errorHandler = function (name) {
-  return err => $.util.log($.util.color.red(`[${name}]`, err));
-};
-
 gulp.task('bower', () => gulp.src(['./bower.json']).pipe($.install()));
 
 gulp.task('inject', cb => runSequence(
@@ -30,9 +26,8 @@ gulp.task('inject', cb => runSequence(
   cb));
 
 gulp.task('inject:scripts', () => {
-  const injectScripts = gulp.src(paths.scripts)
-    .pipe($.angularFilesort())
-    .on('error', errorHandler('AngularFilesort'));
+  const injectScripts = gulp.src(paths.scripts, { read: false })
+    .pipe($.sort());
 
   const injectOptions = {
     ignorePath: [paths.client],
@@ -63,9 +58,7 @@ gulp.task('inject:css', () => {
 });
 
 gulp.task('inject:partials', ['build:partials'], () => {
-  const injectPartials = gulp.src(`${paths.temp}/template-cache.js`)
-    .pipe($.angularFilesort())
-    .on('error', errorHandler('AngularFilesort'));
+  const injectPartials = gulp.src(`${paths.temp}/template-cache.js`);
 
   const injectOptions = {
     ignorePath: [paths.temp],
@@ -80,8 +73,8 @@ gulp.task('inject:partials', ['build:partials'], () => {
 
 gulp.task('build:partials', () => {
   return gulp.src(paths.views)
-    .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
-    .pipe($.angularTemplatecache('template-cache.js', { module:'throwcast', standalone:false }))
+    .pipe($.htmlmin({ collapseWhitespace: true, removeComments: true }))
+    .pipe($.angularTemplatecache('template-cache.js', { module: 'throwcast', standalone: false }))
     .pipe(gulp.dest(paths.temp));
 });
 
@@ -117,13 +110,17 @@ gulp.task('serve:dev', function () {
 });
 
 gulp.task('build', cb => runSequence(
-  'clean:dist',
+  [
+    'clean:dist',
+    'clean:temp',
+  ],
   'inject',
   'useref',
   'copy:extras',
   cb));
 
 gulp.task('clean:dist', () => del([`${paths.dist}/!(.git*|.static|Procfile)**`], { dot: true }));
+gulp.task('clean:temp', () => del([`${paths.temp}/**`], { dot: true }));
 
 gulp.task('useref', ['clean:dist'], () => {
   return gulp.src(paths.mainView)
