@@ -1,16 +1,16 @@
-<div class="views">
+<div class="stations-page">
   <h1>Stations</h1>
-  <div>
-    <div class="mainDiv" ng-repeat="station in stations">
-      <p ng-show="message">{{message}}</p>
-      <a href="/stations/{{station._id}}">
-        <img class="img-thumbnail" ng-src="{{station.image || defaultImage}}"/>
-      </a>
-      <ul class="list-group">
-        <li class="list-group-item title"><strong>Station:</strong> {{station.title}}</li>
-        <li class="list-group-item description"><strong>Description:</strong> {{station.description.short || station.description.long || podcast.title}}</li>
-      </ul>
-      <button class='btn btn-primary' ng-click="subscribe(stations[$index]._id, $index)">Subscribe</button>
+  <div class="stations">
+    <div class="info-tile" ng-repeat="station in stations">
+      <div class="image" ng-style="{'background-image':'url({{station.image}})'}">
+        <div class="actions">
+          <span class="action">
+            <i class="glyphicon glyphicon-heart favorite"></i>
+          </span>
+        </div>
+      </div>
+      <div class="title" ng-click="stationDetail(station)">{{station.title}}</div>
+      <div class="description" ng-bind-html="station.description.short || station.description.long"></div>
     </div>
   </div>
 </div>

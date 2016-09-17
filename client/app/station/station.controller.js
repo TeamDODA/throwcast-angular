@@ -3,7 +3,7 @@ var module = angular.module('tc.station.controller', [
   'tc.user.service',
 ]);
 
-module.controller('StationController', function ($scope, Station, User) {
+module.controller('StationController', function ($scope, $location, Station, User) {
   $scope.defaultImage = 'http://myndset.com/wp-content/uploads/2015/10/podcast-image.jpg';
   User.getUserAsync().then(function (user) {
     $scope.user = user;
@@ -17,12 +17,8 @@ module.controller('StationController', function ($scope, Station, User) {
       $scope.selected = Station.data.selected;
     });
   };
-  $scope.subscribe = function (stationId, index) {
-    $scope.user.subscriptions.push(stationId);
-    User.updateSubscribtion($scope.user.subscriptions).then(function (res) {
-      $scope.user.subscriptions = User.data.user.subscriptions;
-      $scope.subMessage = "Subcribed to " + $scope.user.subscriptions[$scope.user.subscriptions.length - 1].title + '.';
-    });
-    $scope.selIndex = index;
+
+  $scope.stationDetail = function stationDetail(station) {
+    $location.path('/stations/' + station._id);
   };
 });

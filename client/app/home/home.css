@@ -9,13 +9,13 @@
   background-image: url('/assets/images/bars.jpg');
 }
 
-.home-page .playlists .info-tile .bars {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
+.home-page .stations .info-tile .title,
 .home-page .playlists .info-tile .title {
   cursor: pointer;
+}
+
+.home-page .stations .info-tile .title:hover,
+.home-page .playlists .info-tile .title:hover {
+  background: #333;
+  color: #cc1acc;
 }
