@@ -70,5 +70,5 @@ module.controller('HomeController', function ($scope, $http, $location, API_BASE
 
   $scope.playlistDetail = function playlistDetail(playlist) {
     $location.path('/playlists/' + playlist._id);
-  }
+  };
 });

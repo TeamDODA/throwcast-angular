@@ -4,13 +4,14 @@ var module = angular.module('tc.station.controller', [
 ]);
 
 module.controller('StationController', function ($scope, $location, Station, User) {
-  $scope.defaultImage = 'http://myndset.com/wp-content/uploads/2015/10/podcast-image.jpg';
   User.getUserAsync().then(function (user) {
     $scope.user = user;
   });
+
   Station.getStations().then(function () {
     $scope.stations = Station.data.stations.data;
   });
+
   $scope.getStationPodcast = function (id) {
     Station.getStationPodcast(id).then(function () {
       $scope.selectedStationPodcasts = Station.data.selectedStationPodcasts.data;
