@@ -6,27 +6,22 @@ var module = angular.module('tc.home.controller', [
 ]);
 
 module.controller('HomeController', function ($scope, $http, $location, API_BASE, Playlist, Podcast, Station, User) {
+  $scope.popular = {};
+
+  $http.get(API_BASE + '/api/podcasts/favorites').then(function (res) {
+    $scope.popular.podcasts = res.data;
+  });
+
+  $http.get(API_BASE + '/api/stations/favorites').then(function (res) {
+    $scope.popular.stations = res.data;
+  });
+
+  $http.get(API_BASE + '/api/playlists/favorites').then(function (res) {
+    $scope.popular.playlists = res.data;
+  });
+
   User.getUserAsync().then(function (user) {
     $scope.user = user;
-  });
-
-  Podcast.getAllPodcasts().then(function () {
-    $scope.podcasts = Podcast.data.podcasts;
-  });
-
-  Station.getStations().then(function () {
-    $scope.stations = Station.data.stations.data;
-  });
-
-  $scope.getStationPodcast = function (station, index) {
-    Station.getStationPodcast(station, index).then(function () {
-      $scope.selectedStationPodcasts = Station.data.selectedStationPodcasts;
-      $scope.selected = Station.data.selected;
-    });
-  };
-
-  Playlist.getAllPlaylist().then(function (res) {
-    $scope.playlists = Playlist.data.allPlaylist;
   });
 
   $scope.getUserPlaylist = function (user, playlist, index) {
@@ -48,21 +43,8 @@ module.controller('HomeController', function ($scope, $http, $location, API_BASE
     });
   };
 
-  $scope.play = function (link) {
-    $scope.podcastLink = Podcast.play(link);
-  };
-
-  $scope.getPopularPodcast = function () {
-    $http.get(API_BASE + '/api/podcasts/popular').then(function (res) {
-      $scope.popularPodcasts = res.data.data;
-    });
-  };
-
-  $scope.getPopularStations = function () {
-    $http.get(API_BASE + '/api/stations/popular').then(function (res) {
-      $scope.popularStations = res.data.data;
-    });
-  };
+  $scope.play = Podcast.play;
+  $scope.stop = Podcast.stop;
 
   $scope.stationDetail = function stationDetail(station) {
     $location.path('/stations/' + station._id);
@@ -70,5 +52,9 @@ module.controller('HomeController', function ($scope, $http, $location, API_BASE
 
   $scope.playlistDetail = function playlistDetail(playlist) {
     $location.path('/playlists/' + playlist._id);
+  };
+
+  $scope.isPlaying = function isPlaying(podcast) {
+    return Podcast.data.selected === podcast;
   };
 });
