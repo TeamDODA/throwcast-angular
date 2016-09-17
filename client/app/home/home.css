@@ -1,0 +1,6 @@
+.home-page .stations,
+.home-page .playlists,
+.home-page .podcasts {
+  display:flex;
+  flex-wrap: wrap;
+}

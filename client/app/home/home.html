@@ -1,33 +1,50 @@
-<div class="views">
-  <h1>Popular Podcasts</h1>
-  <div>
-    <div class="mainDiv" ng-repeat="podcast in podcasts.slice(0,10) track by $index">
-      <img class="img-thumbnail" ng-src="{{podcast.image || defaultImage}}"/>
-      <ul class="list-group">
-        <li class="list-group-item title" ng-click="play(podcast)"><strong>Title:</strong> <u>{{podcast.title}}</u></li>
-        <li class="list-group-item description"><strong>Description:</strong> {{podcast.description}}</li>
-        <li class="list-group-item"><strong>Release Date:</strong> {{podcast.published | date: "mediumDate"}}</li>
-      </ul>
-      <button class='btn btn-primary' ng-click="getUserPlaylist(user, allPlaylist, $index)">+</button>
-      <select class="form-control"
-              ng-show="selectedIndex === $index"
-              ng-options="playlist.title for playlist in userPlaylists"
-              ng-model="selectedPlaylist"
-              ng-change="selectedIndex = null; addPodcastToPlaylist(podcast, selectedPlaylist)">
-      </select>
+<div class="home-page">
+  <h1>Podcasts</h1>
+  <div class="podcasts">
+    <div class="info-tile" ng-repeat="podcast in podcasts | limitTo: 24">
+      <div class="image" ng-style="{'background-image':'url({{podcast.image}})'}">
+        <div class="actions">
+          <span class="action" ng-click="play(podcast)">
+            <i class="glyphicon glyphicon-play play"></i>
+          </span>
+          <span class="spacer"></span>
+          <span class="action">
+            <i class="glyphicon glyphicon-plus add"></i>
+          </span>
+          <span class="action">
+            <i class="glyphicon glyphicon-heart favorite"></i>
+          </span>
+        </div>
+      </div>
+      <div class="title">{{podcast.title}}</div>
+      <div class="description" ng-bind-html="podcast.description"></div>
     </div>
   </div>
   <h1>Stations</h1>
-  <div>
-    <div class="mainDiv" ng-repeat="station in stations">
-      <a href="/stations/{{station._id}}">
-        <img class="img-thumbnail" ng-src="{{station.image || defaultImage}}"/>
-      </a>
-      <ul class="list-group">
-        <li class="list-group-item title"><strong>Station:</strong> {{station.title}}</li>
-        <li class="list-group-item description"><strong>Description:</strong> {{station.description.short || station.description.long}}</li>
-      </ul>
-      <button class='btn btn-primary' ng-click="subscribe(stations[$index]._id, $index)">Subscribe</button>
+  <div class="stations">
+    <div class="info-tile" ng-repeat="station in stations | limitTo: 24">
+      <div class="image" ng-style="{'background-image':'url({{station.image}})'}">
+        <div class="actions">
+          <span class="action">
+            <i class="glyphicon glyphicon-heart favorite"></i>
+          </span>
+        </div>
+      </div>
+      <div class="title" ng-click="stationDetail(station)">{{station.title}}</div>
+      <div class="description" ng-bind-html="station.description.short || station.description.long"></div>
+    </div>
+  </div>
+  <h1>Playlists</h1>
+  <div class="playlists">
+    <div class="info-tile" ng-repeat="playlist in playlists | limitTo: 24">
+      <div class="image">
+        <div class="actions">
+          <span class="action">
+            <i class="glyphicon glyphicon-heart favorite"></i>
+          </span>
+        </div>
+      </div>
+      <div class="title" ng-click="playlistDetail(playlist)">{{playlist.title}}</div>
     </div>
   </div>
 </div>

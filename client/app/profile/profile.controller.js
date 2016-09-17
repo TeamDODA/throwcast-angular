@@ -4,8 +4,7 @@ var module = angular.module('tc.profile.controller', [
   'tc.user.playlist.service',
 ]);
 
-module.controller('ProfileController', function ($scope, Playlist, UserPlaylist, User) {
-  $scope.defaultImage = 'http://myndset.com/wp-content/uploads/2015/10/podcast-image.jpg';
+module.controller('ProfileController', function ($scope, $location, Playlist, UserPlaylist, User) {
   $scope.data = Playlist.data;
   $scope.playlist = {};
   $scope.UserPlaylist = UserPlaylist.data;
@@ -24,17 +23,17 @@ module.controller('ProfileController', function ($scope, Playlist, UserPlaylist,
   };
 
   $scope.createPlaylist = function () {
-    UserPlaylist.createPlaylist($scope.playlist);
+    if ($scope.playlist.title) {
+      UserPlaylist.createPlaylist({ title: $scope.playlist.title });
+      delete $scope.playlist.title;
+    }
   };
 
   $scope.deletePlaylist = function (index, playlistId) {
     UserPlaylist.deletePlaylist(index, playlistId);
   };
 
-  $scope.unsubscribe = function (index) {
-    $scope.user.subscriptions.splice(index, 1);
-    User.updateSubscribtion($scope.user.subscriptions).then(function () {
-      $scope.user.subscriptions = User.data.user.subscriptions;
-    });
+  $scope.playlistDetail = function playlistDetail(playlist) {
+    $location.path('/playlists/' + playlist._id);
   };
 });
