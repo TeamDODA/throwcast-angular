@@ -4,10 +4,10 @@ var module = angular.module('tc.home.controller', [
   'tc.user.service',
 ]);
 
-module.controller('HomeController', function ($scope, $http, API_BASE, Playlist, Podcast, Station, User) {
-  $scope.defaultImage = 'http://myndset.com/wp-content/uploads/2015/10/podcast-image.jpg';
-  $scope.h1 = 'Top Podcast';
-  $scope.stationPodcastButton = 'Show Station Podcasts';
+module.controller('HomeController', function ($scope, $http, $location, API_BASE, Playlist, Podcast, Station, User) {
+  User.getUserAsync().then(function (user) {
+    $scope.user = user;
+  });
 
   Podcast.getAllPodcasts().then(function () {
     $scope.podcasts = Podcast.data.podcasts;
@@ -24,12 +24,8 @@ module.controller('HomeController', function ($scope, $http, API_BASE, Playlist,
     });
   };
 
-  User.getUserAsync().then(function (user) {
-    $scope.user = user;
-  });
-
   Playlist.getAllPlaylist().then(function (res) {
-    $scope.allPlaylist = Playlist.data.allPlaylist;
+    $scope.playlists = Playlist.data.allPlaylist;
   });
 
   $scope.getUserPlaylist = function (user, playlist, index) {
@@ -89,4 +85,12 @@ module.controller('HomeController', function ($scope, $http, API_BASE, Playlist,
       $scope.getPodcast();
     });
   };
+
+  $scope.stationDetail = function stationDetail(station) {
+    $location.path('/stations/' + station._id);
+  }
+
+  $scope.playlistDetail = function playlistDetail(playlist) {
+    $location.path('/playlist/' + playlist._id);
+  }
 });

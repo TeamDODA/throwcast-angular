@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Throwcast</title>
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,400|Work+Sans|Titillium+Web" rel="stylesheet">
     <!-- build:css(client) css/vendor.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
@@ -11,6 +12,7 @@
     <!-- build:css(client) css/styles.min.css -->
     <!-- injector:css -->
     <link rel="stylesheet" href="app/account/account.css">
+    <link rel="stylesheet" href="app/home/home.css">
     <link rel="stylesheet" href="components/nav/nav.css">
     <link rel="stylesheet" href="style.css">
     <!-- endinjector -->
@@ -19,11 +21,11 @@
   </head>
   <body ng-app="throwcast">
     <tc-nav></tc-nav>
+    <div ng-view id="view"></div>
     <div ng-cloak ng-controller="PlayerController" ng-show="podcast.selected" class="audioplayer">
-      <ul class="podcasttitle">Title: {{podcast.selected.title}}</ul>
+      <span class="podcasttitle">{{podcast.selected.title}}</span>
       <audio id="audio" ng-src="{{podcast.selected.enclosure.url}}" controls autoplay></audio>
     </div>
-    <div ng-view id="view"></div>
     <!-- build:js(client) js/vendor.min.js -->
     <!-- bower:js -->
     <script src="lib/jquery/dist/jquery.js"></script>

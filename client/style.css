@@ -6,53 +6,30 @@ body {
 }
 
 body {
-  padding-top: 70px;
-  background-color: silver;
+  padding-top: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #444;
 }
 
 /*VIEWS*/
 
 #view {
-  padding-bottom: 32px;
+  flex: 1;
+  overflow: auto;
 }
 
 .views {
   text-align: center;
 }
 
-.mainDiv {
-  display: inline-block;
-  width: 300px;
-  padding-bottom: 15px;
-}
-
-img {
-  top: 0;
-  display:block;
-  margin:auto;
-  width: 200px;
-  height: 150px;
-}
-
-.description {
-  height:125px;
-  overflow-y: scroll;
-}
-
-.title {
-  height:80px;
-  overflow-y: scroll;
-  text-align: center;
-}
-
 /*AUDIO PLAYER*/
 
 .audioplayer {
-  position: fixed;
-  bottom: 0;
   height: 32px;
   width: 100%;
-  background: black;
+  background: #333;
   z-index: 1000;
 }
 
@@ -62,6 +39,12 @@ img {
   color: white;
   width: 60%;
   padding: 6px;
+  font-weight: 100;
+  font-family: Roboto, sans-serif;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #audio {
@@ -71,7 +54,8 @@ img {
 }
 
 h1 {
-  margin: 10px 0 20px 0;
+  font-family: Work Sans, sans-serif;
+  margin: 10px 0 10px 0;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.5);
 }
