@@ -33,7 +33,6 @@ gulp.task('inject:scripts', () => {
     ignorePath: [paths.client],
     starttag: '<!-- inject:js -->',
     endtag: '<!-- endinject -->',
-    addRootSlash: false,
   };
 
   return gulp.src(paths.mainView)
@@ -49,7 +48,6 @@ gulp.task('inject:css', () => {
     ignorePath: [paths.client],
     starttag: '<!-- injector:css -->',
     endtag: '<!-- endinjector -->',
-    addRootSlash: false,
   };
 
   return gulp.src(paths.mainView)
@@ -64,7 +62,6 @@ gulp.task('inject:partials', ['build:partials'], () => {
     ignorePath: [paths.temp],
     starttag: '<!-- inject:partial -->',
     endtag: '<!-- endinject -->',
-    addRootSlash: false,
   };
   return gulp.src(paths.mainView)
     .pipe($.inject(injectPartials, injectOptions))
@@ -82,7 +79,14 @@ gulp.task('wiredep', () => {
   return gulp.src(paths.mainView)
     .pipe($.wiredep({
       directory: `${paths.client}/lib/`,
-      ignorePath: `${paths.client}/lib/`,
+      fileTypes: {
+        html: {
+          replace: {
+            js: '<script src="/{{filePath}}"></script>',
+            css: '<link rel="stylesheet" href="/{{filePath}}" />'
+          }
+        }
+      }
     }))
     .pipe(gulp.dest(paths.client));
 });
