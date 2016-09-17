@@ -21,4 +21,8 @@ module.controller('NavController', function NavController($scope, $location, Aut
     $location.path('/results');
     $scope.searchQuery = '';
   };
+
+  $scope.isActive = function isActive(path) {
+    return path === $location.path();
+  };
 });

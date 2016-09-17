@@ -41,35 +41,35 @@
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
   color: #ffffff;
-  background: rgb(77, 77, 77);
+  background: rgb(55, 99, 99);
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background: rgb(77, 77, 77);
+  background: rgb(55, 99, 99);
 }
 .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
   color: #ffffff;
-  background: rgb(77, 77, 77);
+  background: rgb(55, 99, 99);
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background: rgb(77, 77, 77);
+  background: rgb(55, 99, 99);
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
   color: #ffffff;
-  background: rgb(77, 77, 77);
+  background: rgb(55, 99, 99);
 }
 .navbar-default .navbar-toggle {
-  border-color: rgb(77, 77, 77);
+  border-color: rgb(55, 99, 99);
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background: rgb(77, 77, 77);
+  background: rgb(55, 99, 99);
 }
 .navbar-default .navbar-toggle .icon-bar {
   background: #ecf0f1;
@@ -97,6 +97,6 @@
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ffffff;
-    background: rgb(77, 77, 77);
+    background: rgb(55, 99, 99);
   }
 }
