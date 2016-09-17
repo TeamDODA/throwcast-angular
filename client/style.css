@@ -59,6 +59,14 @@ h1 {
   background-color: #333;
 }
 
+h2 {
+  margin: 0;
+  padding: 5px 10px;
+  font-family: Work Sans, sans-serif;
+  color: #f7f;
+  background-color: #222;
+}
+
 .playlists .info-tile .image {
   background-image: url('/assets/images/bars.jpg');
 }
@@ -143,10 +151,21 @@ h1 {
 
 .info-tile .actions .action:hover {
   font-size: 25px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255, 255, 255);
 }
 
 .info-tile .actions .action.delete:hover {
-  font-size: 25px;
-  color: rgba(255, 100, 100, 1);
+  color: rgb(255, 100, 100);
+}
+
+.info-tile .actions .action.play:hover {
+  color: rgb(100, 255, 100);
+}
+
+.info-tile .actions .action.stop:hover {
+  color: rgb(255, 255, 255);
+}
+
+.info-tile .actions .action.stop {
+  color: rgb(100, 255, 100);
 }
