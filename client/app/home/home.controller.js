@@ -1,6 +1,7 @@
 var module = angular.module('tc.home.controller', [
   'tc.playlist.service',
   'tc.podcast.service',
+  'tc.station.service',
   'tc.user.service',
 ]);
 
@@ -47,15 +48,6 @@ module.controller('HomeController', function ($scope, $http, $location, API_BASE
     });
   };
 
-  $scope.subscribe = function (stationId, index) {
-    $scope.user.subscriptions.push(stationId);
-    User.updateSubscribtion($scope.user.subscriptions).then(function (res) {
-      $scope.user.subscriptions = User.data.user.subscriptions;
-      $scope.subMessage = "Subcribed to " + $scope.user.subscriptions[$scope.user.subscriptions.length - 1].title + '.';
-    });
-    $scope.selIndex = index;
-  };
-
   $scope.play = function (link) {
     $scope.podcastLink = Podcast.play(link);
   };
@@ -72,25 +64,11 @@ module.controller('HomeController', function ($scope, $http, $location, API_BASE
     });
   };
 
-  $scope.addToQueue = function (userId, podcastId) {
-    $http.post(API_BASE + '/api/user/' + userId + '/queue/', { podcastId: podcastId }).then(function (res) {
-      $scope.message = $scope.podcasts.name + ' has been added to your queue.';
-      $scope.getPodcast();
-    });
-  };
-
-  $scope.addPodToPlaylist = function (playlistId, podcastId) {
-    $http.post(API_BASE + '/api/playlist/' + playlistId + '/podcast/', { podcastId: podcastId }).then(function (res) {
-      $scope.message = $scope.podcasts.name + ' has been added to ' + res.data.name + '.';
-      $scope.getPodcast();
-    });
-  };
-
   $scope.stationDetail = function stationDetail(station) {
     $location.path('/stations/' + station._id);
-  }
+  };
 
   $scope.playlistDetail = function playlistDetail(playlist) {
-    $location.path('/playlist/' + playlist._id);
+    $location.path('/playlists/' + playlist._id);
   }
 });

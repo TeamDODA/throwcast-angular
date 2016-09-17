@@ -5,7 +5,7 @@ var module = angular.module('tc.podcast', [
 
 module.config(function ($routeProvider) {
   $routeProvider
-    .when('/podcast', {
+    .when('/podcasts', {
       templateUrl: 'app/podcast/podcast.html',
       controller: 'PodcastController',
       authenticate: true
