@@ -1,0 +1,43 @@
+.profile-page .podcasts,
+.profile-page .playlists,
+.profile-page .stations {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.profile-page h2 {
+
+}
+
+.profile-page input[type=text] {
+  margin: 5px;
+  color: white;
+  background: transparent;
+  border-radius: 25px;
+  border: 2px solid white;
+}
+
+.profile-page .create-playlist button {
+  margin: 5px;
+  padding: 0 6px;
+  min-width: 125px;
+  color: #f7f;
+  background: transparent;
+  border-radius: 25px;
+  border: 2px solid #f7f;
+  transition-property:background,color;
+  transition-duration:.2s;
+}
+
+.profile-page .create-playlist button:hover {
+  cursor:pointer;
+  color:#555;
+  background:#f7f;
+  transition-property:background,color;
+  transition-duration:.2s;
+}
+
+.create-playlist {
+  display: flex;
+  background: #555;
+}

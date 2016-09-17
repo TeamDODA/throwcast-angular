@@ -3,16 +3,3 @@
   display:flex;
   flex-wrap: wrap;
 }
-
-.playlists-page .playlists .info-tile .image {
-  background-image: url('/assets/images/bars.jpg');
-}
-
-.playlists-page .playlists .info-tile .title {
-  cursor: pointer;
-}
-
-.playlists-page .playlists .info-tile .title:hover {
-  background: #333;
-  color: #cc1acc;
-}

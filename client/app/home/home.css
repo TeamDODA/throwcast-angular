@@ -4,18 +4,3 @@
   display:flex;
   flex-wrap: wrap;
 }
-
-.home-page .playlists .info-tile .image {
-  background-image: url('/assets/images/bars.jpg');
-}
-
-.home-page .stations .info-tile .title,
-.home-page .playlists .info-tile .title {
-  cursor: pointer;
-}
-
-.home-page .stations .info-tile .title:hover,
-.home-page .playlists .info-tile .title:hover {
-  background: #333;
-  color: #cc1acc;
-}

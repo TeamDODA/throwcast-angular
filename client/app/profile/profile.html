@@ -1,37 +1,26 @@
-<div class="views">
-  <h1>Welcome {{user.username}}</h1>
-  <div>
-    <div class="input-row">
-      <div class="form-group">
-        <label for="name">Playlist Name</label>
-        <input type="text" class="form-control" id="name" ng-model="playlist.title">
+<div class="profile-page">
+  <h1>{{user.username}}'s Playlists</h1>
+  <div class="user-playlists">
+    <div class="create-playlist">
+        <input type="text" class="form-control" placeholder="New Playlist Name..." ng-model="playlist.title">
+        <button ng-click="createPlaylist()">Create Playlist</button>
+    </div>
+    <div class="playlists">
+      <div class="info-tile" ng-repeat="playlist in UserPlaylist.usersPlaylist">
+        <div class="image">
+          <div class="actions">
+          <span class="action">
+            <i class="glyphicon glyphicon-heart favorite"></i>
+          </span>
+          <span class="spacer"></span>
+          <span class="action delete" ng-click="deletePlaylist($index, UserPlaylist.usersPlaylist[$index]._id)">
+            <i class="glyphicon glyphicon-minus"></i>
+          </span>
+          </div>
+        </div>
+        <div class="title" ng-click="playlistDetail(playlist)">{{playlist.title}}</div>
       </div>
-      <button class='btn btn-primary' ng-click="createPlaylist()">Create Playlist</button>
-    </div>
-
-    <h1>My Playlists</h1>
-    <div class="mainDiv" ng-repeat="playlist in UserPlaylist.usersPlaylist">
-      <ul class="list-group">
-        <a href="/playlists/{{playlist._id}}">
-          <li class="list-group-item"><strong>Playlist Title:</strong> <u>{{playlist.title}}</u></li>
-        </a>
-      </ul>
-      <button class='btn btn-primary' ng-click="deletePlaylist($index, UserPlaylist.usersPlaylist[$index]._id)">
-        Delete Playlist
-      </button>
-    </div>
-    <h1>Subcribed Stations</h1>
-    <div class="mainDiv" ng-repeat="station in user.subscriptions">
-      <ul class="list-group">
-        <a href="/stations/{{station._id}}">
-          <img class="img-thumbnail" ng-src="{{station.image || defaultImage}}"/>
-        </a>
-        <li class="list-group-item title"><strong>Station:</strong> {{station.title}}</li>
-        <li class="list-group-item description"><strong>Description:</strong> {{station.description.short ||
-          station.description.long}}
-        </li>
-      </ul>
-      <button class='btn btn-primary' ng-click="unsubscribe($index)">Unsubscribe</button>
     </div>
   </div>
+  <h1>Favorites</h1>
 </div>

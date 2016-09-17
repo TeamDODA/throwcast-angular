@@ -19,7 +19,8 @@
         <li ng-class="{active: isActive('/playlists')}"><a href="/playlists">Playlists</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="user"><a href="/profile/"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li ng-class="{active: isActive('/profile')}">
+          <a href="/profile/"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
         <li class="logout" ng-click="logout()"><a href="#">
           <span class="glyphicon glyphicon-log-out"></span>
           <span class="visible-xs-inline-block">Log out</span>
