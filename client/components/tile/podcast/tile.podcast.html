@@ -1,0 +1,23 @@
+<div class="tile">
+  <div class="image" ng-style="{'background-image':'url({{$ctrl.podcast.image}})'}">
+    <div class="actions">
+      <span class="action play" ng-if="!isPlaying($ctrl.podcast)" ng-click="play($ctrl.podcast)">
+        <i class="glyphicon glyphicon-play"></i>
+      </span>
+      <span class="action stop" ng-if="isPlaying($ctrl.podcast)" ng-click="stop()">
+        <i class="glyphicon glyphicon-stop"></i>
+      </span>
+      <span class="spacer"></span>
+      <span class="action add">
+        <i class="glyphicon glyphicon-plus"></i>
+      </span>
+      <span class="action favorite"
+            ng-class="{active: isFavorite($ctrl.podcast._id)}"
+            ng-click="toggleFavorite('podcasts', $ctrl.podcast._id)">
+            <i class="glyphicon glyphicon-heart"></i>
+          </span>
+    </div>
+  </div>
+  <div class="title">{{$ctrl.podcast.title}}</div>
+  <div class="description" ng-bind-html="$ctrl.podcast.description"></div>
+</div>

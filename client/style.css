@@ -67,6 +67,16 @@ h2 {
   background-color: #222;
 }
 
+.stations,
+.playlists,
+.podcasts {
+  display:flex;
+  flex-wrap: wrap;
+  border-color: rgb(0, 0, 0);
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+}
+
 .playlists .info-tile .image {
   background-image: url('/assets/images/bars.jpg');
 }

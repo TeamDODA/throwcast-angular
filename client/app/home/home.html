@@ -2,46 +2,26 @@
   <h1>Popular</h1>
   <h2>Podcasts</h2>
   <div class="podcasts">
-    <div class="info-tile" ng-repeat="item in popular.podcasts | limitTo: 24">
-      <div class="image" ng-style="{'background-image':'url({{item.podcast.image}})'}">
-        <div class="actions">
-          <span class="action play" ng-if="!isPlaying(item.podcast)" ng-click="play(item.podcast)">
-            <i class="glyphicon glyphicon-play"></i>
-          </span>
-          <span class="action stop" ng-if="isPlaying(item.podcast)" ng-click="stop()">
-            <i class="glyphicon glyphicon-stop"></i>
-          </span>
-          <span class="spacer"></span>
-          <span class="action add">
-            <i class="glyphicon glyphicon-plus"></i>
-          </span>
-          <span class="action favorite">
-            <i class="glyphicon glyphicon-heart"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title">{{item.podcast.title}}</div>
-      <div class="description" ng-bind-html="item.podcast.description"></div>
-    </div>
+    <podcast-tile ng-repeat="podcast in _.map(popular.podcasts, 'podcast') | limitTo: 24" podcast="podcast" />
   </div>
   <h2>Stations</h2>
   <div class="stations">
-    <div class="info-tile" ng-repeat="item in popular.stations | limitTo: 24">
-      <div class="image" ng-style="{'background-image':'url({{item.station.image}})'}">
+    <div class="info-tile" ng-repeat="station in _.map(popular.stations, 'station') | limitTo: 24">
+      <div class="image" ng-style="{'background-image':'url({{station.image}})'}">
         <div class="actions">
           <span class="action">
             <i class="glyphicon glyphicon-heart favorite"></i>
           </span>
         </div>
       </div>
-      <div class="title" ng-click="stationDetail(item.station)">{{item.station.title}}</div>
+      <div class="title" ng-click="stationDetail(station)">{{station.title}}</div>
       <div class="description"
-           ng-bind-html="item.station.description.short || item.station.description.long"></div>
+           ng-bind-html="station.description.short || station.description.long"></div>
     </div>
   </div>
   <h2>Playlists</h2>
   <div class="playlists">
-    <div class="info-tile" ng-repeat="item in popular.playlists | limitTo: 24">
+    <div class="info-tile" ng-repeat="playlist in _.map(popular.playlists, 'playlist') | limitTo: 24">
       <div class="image">
         <div class="actions">
           <span class="action">
@@ -49,7 +29,7 @@
           </span>
         </div>
       </div>
-      <div class="title" ng-click="playlistDetail(item.playlist)">{{item.playlist.title}}</div>
+      <div class="title" ng-click="playlistDetail(playlist)">{{playlist.title}}</div>
     </div>
   </div>
 </div>

@@ -1,26 +1,6 @@
-<div class="station-details-page" ng-show="station.selected">
-  <h1>{{station.selected.title}}</h1>
+<div class="station-details-page">
+  <h1>{{station.title}}</h1>
   <div class="podcasts">
-    <div class="info-tile" ng-repeat="podcast in station.selected.podcasts | orderBy:'-'">
-      <div class="image" ng-style="{'background-image':'url({{station.selected.image}})'}">
-        <div class="actions">
-          <span class="action play" ng-if="!isPlaying(podcast)" ng-click="play(podcast)">
-            <i class="glyphicon glyphicon-play"></i>
-          </span>
-          <span class="action stop" ng-if="isPlaying(podcast)" ng-click="stop()">
-            <i class="glyphicon glyphicon-stop"></i>
-          </span>
-          <span class="spacer"></span>
-          <span class="action add">
-            <i class="glyphicon glyphicon-plus"></i>
-          </span>
-          <span class="action favorite">
-            <i class="glyphicon glyphicon-heart"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title">{{podcast.title}}</div>
-      <div class="description" ng-bind-html="podcast.description"></div>
-    </div>
+    <podcast-tile ng-repeat="podcast in station.podcasts | orderBy:'-'" podcast="podcast" />
   </div>
 </div>

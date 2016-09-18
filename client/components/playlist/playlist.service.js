@@ -11,6 +11,9 @@ module.factory('Playlist', function ($http, API_BASE) {
         data.playlists = res.data;
       });
     },
+    popular: function() {
+      return $http.get(API_BASE + '/api/playlists/favorites');
+    },
     detail: function (playlistId) {
       return $http.get(API_BASE + '/api/playlists/' + playlistId).then(function (res) {
         data.selected = res.data;

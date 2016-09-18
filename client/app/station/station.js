@@ -14,6 +14,17 @@ module.config(function ($routeProvider) {
     .when('/stations/:id', {
       templateUrl: 'app/station/detail/station.detail.html',
       controller: 'StationDetailController',
-      authenticate: true
+      authenticate: true,
+      resolve: {
+        user: function(User) {
+          return User.getUserAsync();
+        },
+        favorite: function(Favorite) {
+          return Favorite.list();
+        },
+        station: function($route, Station) {
+          return Station.detail($route.current.params.id);
+        },
+      }
     });
 });

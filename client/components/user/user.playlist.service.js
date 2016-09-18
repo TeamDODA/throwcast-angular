@@ -15,6 +15,7 @@ module.factory('UserPlaylist', function ($http, API_BASE, Playlist, User) {
     list: function () {
       return $http.get(API_BASE + '/api/users/playlists/').then(function (res) {
         data.playlists = res.data;
+        return data;
       });
     },
     deletePlaylist: function (playlist) {

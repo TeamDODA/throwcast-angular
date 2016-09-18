@@ -2,7 +2,7 @@ var module = angular.module('tc.account.controller', [
   'tc.auth',
 ]);
 
-module.controller('AccountController', function ($scope, $location, $window, Auth) {
+module.controller('AccountController', function ($scope, $location, $window, Auth, Favorite) {
   $scope.userCredentials = { username: '', password: '' };
   $scope.signUp = function () {
     Auth.signUp($scope.userCredentials)
@@ -16,6 +16,7 @@ module.controller('AccountController', function ($scope, $location, $window, Aut
   };
   $scope.signIn = function () {
     Auth.signIn($scope.userCredentials)
+      .then(Favorite.list)
       .then(function () {
         $location.path('/');
         $window.location.reload();
