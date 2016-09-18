@@ -1,18 +1,23 @@
 <div class="podcasts-page">
   <h1>Podcasts</h1>
   <div class="podcasts">
-    <div class="info-tile" ng-repeat="podcast in podcasts">
+    <div class="info-tile" ng-repeat="podcast in podcasts.podcasts">
       <div class="image" ng-style="{'background-image':'url({{podcast.image}})'}">
         <div class="actions">
-          <span class="action" ng-click="play(podcast)">
-            <i class="glyphicon glyphicon-play play"></i>
+          <span class="action play" ng-if="!isPlaying(podcast)" ng-click="play(podcast)">
+            <i class="glyphicon glyphicon-play"></i>
+          </span>
+          <span class="action stop" ng-if="isPlaying(podcast)" ng-click="stop()">
+            <i class="glyphicon glyphicon-stop"></i>
           </span>
           <span class="spacer"></span>
-          <span class="action">
-            <i class="glyphicon glyphicon-plus add"></i>
+          <span class="action add">
+            <i class="glyphicon glyphicon-plus"></i>
           </span>
-          <span class="action">
-            <i class="glyphicon glyphicon-heart favorite"></i>
+          <span class="action favorite"
+                ng-class="{active: isFavorite(podcast._id)}"
+                ng-click="toggleFavorite('podcasts', podcast._id)">
+            <i class="glyphicon glyphicon-heart"></i>
           </span>
         </div>
       </div>

@@ -169,3 +169,7 @@ h2 {
 .info-tile .actions .action.stop {
   color: rgb(100, 255, 100);
 }
+
+.info-tile .actions .action.favorite.active {
+  color: #f7f;
+}

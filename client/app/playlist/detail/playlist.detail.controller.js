@@ -11,11 +11,13 @@ module.controller('PlaylistDetailController', function ($scope, $routeParams, Pl
     $scope.user = user;
   });
 
-  Playlist.getSpecificPlaylist($routeParams.id).then(function () {
-    $scope.playlist = Playlist.data.specificPlaylist;
+  Playlist.detail($routeParams.id).then(function () {
+    $scope.playlist = Playlist.data.selected;
   });
-  $scope.deletePodcastFromPlaylist = function (index, playlist) {
-    UserPlaylist.deletePodcastFromPlaylist(index, playlist);
+
+  $scope.delete = function (podcast) {
+    _.pull($scope.playlist, podcast);
+    UserPlaylist.delete(podcast, $scope.playlist);
   };
 
   $scope.play = function (link) {
