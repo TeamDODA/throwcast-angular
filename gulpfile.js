@@ -122,6 +122,7 @@ gulp.task('build', cb => runSequence(
   'inject',
   'useref',
   'imagemin',
+  'copy:fonts',
   'copy:extras',
   cb));
 
@@ -145,6 +146,12 @@ gulp.task('imagemin', () => {
       interlaced: true
     }))
     .pipe(gulp.dest(`${paths.dist}/assets/images`))
+});
+
+gulp.task('copy:fonts', () => {
+  return gulp.src([`${paths.client}/lib/bootstrap/fonts/*.{eot,svg,ttf,woff,woff2}`])
+    .pipe($.flatten())
+    .pipe(gulp.dest(`${paths.dist}/assets/fonts`));
 });
 
 gulp.task('copy:extras', () => {
