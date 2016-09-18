@@ -1,11 +1,18 @@
 var module = angular.module('tc.home.controller', [
+  'tc.favorite.service',
   'tc.playlist.service',
   'tc.podcast.service',
   'tc.station.service',
   'tc.user.service',
 ]);
 
-module.controller('HomeController', function ($scope, $http, $location, API_BASE, Playlist, Podcast, Station, User) {
+module.controller('HomeController', function ($scope, $http, $location,
+                                              API_BASE, Favorite, Playlist, Podcast, Station, User) {
+  User.getUserAsync().then(function (user) {
+    $scope.user = user;
+  });
+  Favorite.list();
+
   $scope.popular = {};
 
   $http.get(API_BASE + '/api/podcasts/favorites').then(function (res) {
@@ -18,10 +25,6 @@ module.controller('HomeController', function ($scope, $http, $location, API_BASE
 
   $http.get(API_BASE + '/api/playlists/favorites').then(function (res) {
     $scope.popular.playlists = res.data;
-  });
-
-  User.getUserAsync().then(function (user) {
-    $scope.user = user;
   });
 
   $scope.getUserPlaylist = function (user, playlist, index) {

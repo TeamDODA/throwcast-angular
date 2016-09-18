@@ -3,8 +3,8 @@ var module = angular.module('tc.podcast.service', []);
 module.factory('Podcast', function ($http, API_BASE) {
   var data = {};
   return {
-    getAllPodcasts: function list() {
-      return $http.get(API_BASE + '/api/podcasts/').then( function (res) {
+    list: function list() {
+      return $http.get(API_BASE + '/api/podcasts/').then(function (res) {
         data.podcasts = res.data;
       });
     },

@@ -7,10 +7,9 @@ module.controller('StationController', function ($scope, $location, Station, Use
   User.getUserAsync().then(function (user) {
     $scope.user = user;
   });
+  Station.list();
 
-  Station.getStations().then(function () {
-    $scope.stations = Station.data.stations.data;
-  });
+  $scope.stations = Station.data;
 
   $scope.getStationPodcast = function (id) {
     Station.getStationPodcast(id).then(function () {

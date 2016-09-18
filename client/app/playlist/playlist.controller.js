@@ -3,15 +3,9 @@ var module = angular.module('tc.playlist.controller', [
 ]);
 
 module.controller('PlaylistController', function ($scope, $location, Playlist) {
-  Playlist.getAllPlaylist().then(function () {
-    $scope.allPlaylist = Playlist.data.allPlaylist;
+  Playlist.list().then(function () {
+    $scope.playlists = Playlist.data.playlists;
   });
-
-  $scope.getSpecificPlaylist = function (playlistId) {
-    Playlist.getSpecificPlaylist(playlistId).then(function () {
-      $scope.specificPlaylist = Playlist.data.specificPlaylist;
-    });
-  };
 
   $scope.playlistDetail = function playlistDetail(playlist) {
     $location.path('/playlists/' + playlist._id);
