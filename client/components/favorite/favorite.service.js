@@ -5,18 +5,18 @@ module.factory('Favorite', function ($http, API_BASE) {
   return {
     list: function () {
       return $http.get(API_BASE + '/api/users/favorites').then(function (res) {
-        data.podcasts = res.data.podcasts;
-        data.playlists = res.data.playlists;
-        data.stations = res.data.stations;
+        data.podcasts = res.data.podcasts || [];
+        data.playlists = res.data.playlists || [];
+        data.stations = res.data.stations || [];
 
         data.idMap = Object.create(null);
-        data.playlists.forEach(function(playlist) {
+        _.each(data.playlists, function (playlist) {
           data.idMap[playlist._id] = true;
         });
-        data.podcasts.forEach(function(podcast) {
+        _.each(data.podcasts, function (podcast) {
           data.idMap[podcast._id] = true;
         });
-        data.stations.forEach(function(station) {
+        _.each(data.stations, function (station) {
           data.idMap[station._id] = true;
         });
         return data;
@@ -24,7 +24,7 @@ module.factory('Favorite', function ($http, API_BASE) {
     },
     toggle: function (type, id) {
       if (!(id in data.idMap)) {
-        return $http.post(API_BASE + '/api/favorites', {from: type, localField: id})
+        return $http.post(API_BASE + '/api/favorites', { from: type, localField: id })
           .then(function (res) {
             data[type].push(res.data);
             data.idMap[res.data._id] = true;
@@ -32,7 +32,7 @@ module.factory('Favorite', function ($http, API_BASE) {
       } else {
         return $http.delete(API_BASE + '/api/users/favorites/' + type + '/' + id)
           .then(function () {
-            _.pullAllBy(data[type], id);
+            _.pullAllBy(data[type], [{ _id: id }], '_id');
             delete data.idMap[id];
           });
       }

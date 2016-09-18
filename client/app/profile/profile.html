@@ -10,16 +10,25 @@
     </div>
   </div>
   <h1>Favorites</h1>
-  <h2>Podcasts</h2>
-  <div class="podcasts">
-    <podcast-tile ng-repeat="podcast in favorite.podcasts | limitTo: 50" podcast="podcast" />
+  <div class="no-results" ng-show="!(favorite.podcasts.length + favorite.stations.length + favorite.playlists.length)">
+    No favorites? Click on some <i class="glyphicon glyphicon-heart favorite"></i>'s!
   </div>
-  <h2>Stations</h2>
-  <div class="stations">
-    <station-tile ng-repeat="station in favorite.stations | limitTo: 50" station="station" />
+  <div ng-show="favorite.podcasts.length">
+    <h2>Podcasts</h2>
+    <div class="podcasts">
+      <podcast-tile ng-repeat="podcast in favorite.podcasts | limitTo: 50" podcast="podcast"></podcast-tile>
+    </div>
   </div>
-  <h2>Playlists</h2>
-  <div class="playlists">
-    <playlist-tile ng-repeat="playlist in favorite.playlists | limitTo: 50" playlist="playlist" />
+  <div ng-show="favorite.stations.length">
+    <h2>Stations</h2>
+    <div class="stations">
+      <station-tile ng-repeat="station in favorite.stations | limitTo: 50" station="station"></station-tile>
+    </div>
+  </div>
+  <div ng-show="favorite.playlists.length">
+    <h2>Playlists</h2>
+    <div class="playlists">
+      <playlist-tile ng-repeat="playlist in favorite.playlists | limitTo: 50" playlist="playlist"></playlist-tile>
+    </div>
   </div>
 </div>
