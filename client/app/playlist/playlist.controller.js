@@ -1,13 +1,5 @@
-var module = angular.module('tc.playlist.controller', [
-  'tc.playlist.service',
-]);
+var module = angular.module('tc.playlist.controller', []);
 
-module.controller('PlaylistController', function ($scope, $location, Playlist) {
-  Playlist.list().then(function () {
-    $scope.playlists = Playlist.data.playlists;
-  });
-
-  $scope.playlistDetail = function playlistDetail(playlist) {
-    $location.path('/playlists/' + playlist._id);
-  };
+module.controller('PlaylistController', function ($scope, playlists) {
+  $scope.playlists = playlists;
 });

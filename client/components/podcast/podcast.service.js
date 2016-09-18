@@ -8,6 +8,9 @@ module.factory('Podcast', function ($http, API_BASE) {
         data.podcasts = res.data;
       });
     },
+    popular: function() {
+      return $http.get(API_BASE + '/api/podcasts/favorites');
+    },
     play: function play(podcast) {
       return data.selected = podcast;
     },

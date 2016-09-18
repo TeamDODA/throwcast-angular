@@ -1,23 +1,6 @@
 <div class="playlist-details-page">
   <h1>{{playlist.title}}</h1>
   <div class="podcasts">
-    <div class="info-tile" ng-repeat="podcast in playlist.podcasts">
-      <div class="image" ng-style="{'background-image':'url({{podcast.image}})'}">
-        <div class="actions">
-          <span class="action" ng-click="play(podcast)">
-            <i class="glyphicon glyphicon-play play"></i>
-          </span>
-          <span class="spacer"></span>
-          <span class="action">
-            <i class="glyphicon glyphicon-plus add"></i>
-          </span>
-          <span class="action">
-            <i class="glyphicon glyphicon-heart favorite"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title">{{podcast.title}}</div>
-      <div class="description" ng-bind-html="podcast.description"></div>
-    </div>
+    <podcast-tile ng-repeat="podcast in playlist.podcasts" podcast="podcast" />
   </div>
 </div>

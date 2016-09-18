@@ -12,6 +12,7 @@ var app = angular.module('throwcast', [
   'tc.profile',
   'tc.result',
   'tc.station',
+  'tc.tile',
   'ngRoute'
 ]);
 
@@ -24,11 +25,12 @@ app.config(function($routeProvider, $locationProvider, $sceProvider) {
   $sceProvider.enabled(false);
 });
 
-app.run(function($rootScope, $location, Auth) {
+app.run(function($rootScope, $location, $window, Auth) {
   $rootScope.$on('$routeChangeStart', function(evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       evt.preventDefault();
       $location.path('/signin');
     }
   });
+  $rootScope._ = $window._;
 });

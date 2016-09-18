@@ -6,73 +6,20 @@
       <button ng-click="createPlaylist()">Create Playlist</button>
     </div>
     <div class="playlists">
-      <div class="info-tile" ng-repeat="playlist in userPlaylists.playlists">
-        <div class="image">
-          <div class="actions">
-            <span class="action">
-              <i class="glyphicon glyphicon-heart favorite"></i>
-            </span>
-            <span class="spacer"></span>
-            <span class="action delete" ng-click="deletePlaylist(playlist)">
-              <i class="glyphicon glyphicon-minus"></i>
-            </span>
-          </div>
-        </div>
-        <div class="title" ng-click="playlistDetail(playlist)">{{playlist.title}}</div>
-      </div>
+      <playlist-tile ng-repeat="playlist in userPlaylists.playlists" playlist="playlist" />
     </div>
   </div>
   <h1>Favorites</h1>
   <h2>Podcasts</h2>
   <div class="podcasts">
-    <div class="info-tile" ng-repeat="podcast in favorite.podcasts | limitTo: 24">
-      <div class="image" ng-style="{'background-image':'url({{podcast.image}})'}">
-        <div class="actions">
-          <span class="action play" ng-if="!isPlaying(podcast)" ng-click="play(podcast)">
-            <i class="glyphicon glyphicon-play"></i>
-          </span>
-          <span class="action stop" ng-if="isPlaying(podcast)" ng-click="stop()">
-            <i class="glyphicon glyphicon-stop"></i>
-          </span>
-          <span class="spacer"></span>
-          <span class="action add">
-            <i class="glyphicon glyphicon-plus"></i>
-          </span>
-          <span class="action favorite">
-            <i class="glyphicon glyphicon-heart"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title">{{podcast.title}}</div>
-      <div class="description" ng-bind-html="podcast.description"></div>
-    </div>
+    <podcast-tile ng-repeat="podcast in favorite.podcasts | limitTo: 50" podcast="podcast" />
   </div>
   <h2>Stations</h2>
   <div class="stations">
-    <div class="info-tile" ng-repeat="station in favorite.stations | limitTo: 24">
-      <div class="image" ng-style="{'background-image':'url({{station.image}})'}">
-        <div class="actions">
-          <span class="action">
-            <i class="glyphicon glyphicon-heart favorite"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title" ng-click="stationDetail(station)">{{station.title}}</div>
-      <div class="description"
-           ng-bind-html="station.description.short || station.description.long"></div>
-    </div>
+    <station-tile ng-repeat="station in favorite.stations | limitTo: 50" station="station" />
   </div>
   <h2>Playlists</h2>
   <div class="playlists">
-    <div class="info-tile" ng-repeat="playlist in favorite.playlists | limitTo: 24">
-      <div class="image">
-        <div class="actions">
-          <span class="action">
-            <i class="glyphicon glyphicon-heart favorite"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title" ng-click="playlistDetail(playlist)">{{playlist.title}}</div>
-    </div>
+    <playlist-tile ng-repeat="playlist in favorite.playlists | limitTo: 50" playlist="playlist" />
   </div>
 </div>

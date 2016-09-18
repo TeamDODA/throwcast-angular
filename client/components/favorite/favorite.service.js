@@ -19,6 +19,7 @@ module.factory('Favorite', function ($http, API_BASE) {
         data.stations.forEach(function(station) {
           data.idMap[station._id] = true;
         });
+        return data;
       });
     },
     toggle: function (type, id) {

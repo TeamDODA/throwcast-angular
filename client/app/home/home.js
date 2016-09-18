@@ -1,4 +1,8 @@
 var module = angular.module('tc.home', [
+  'tc.playlist.service',
+  'tc.podcast.service',
+  'tc.station.service',
+  'tc.user.service',
   'tc.home.controller',
   'ngRoute',
 ]);
@@ -8,6 +12,26 @@ module.config(function ($routeProvider) {
     .when('/', {
       templateUrl: 'app/home/home.html',
       controller: 'HomeController',
-      authenticate: true
+      authenticate: true,
+      resolve: {
+        user: function(User) {
+          return User.getUserAsync();
+        },
+        playlists: function(Playlist) {
+          return Playlist.popular().then(function(res) {
+            return res.data;
+          });
+        },
+        podcasts: function(Podcast) {
+          return Podcast.popular().then(function(res) {
+            return res.data;
+          });
+        },
+        stations: function(Station) {
+          return Station.popular().then(function(res) {
+            return res.data;
+          });
+        },
+      },
     });
 });

@@ -1,14 +1,3 @@
-.profile-page .podcasts,
-.profile-page .playlists,
-.profile-page .stations {
-  display:flex;
-  flex-wrap: wrap;
-}
-
-.profile-page h2 {
-
-}
-
 .profile-page input[type=text] {
   margin: 5px;
   color: white;
@@ -39,5 +28,5 @@
 
 .create-playlist {
   display: flex;
-  background: #555;
+  background: #444;
 }

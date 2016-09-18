@@ -1,0 +1,16 @@
+<div class="tile">
+  <div class="image">
+    <div class="actions">
+      <span class="action favorite"
+            ng-class="{active: isFavorite($ctrl.playlist._id)}"
+            ng-click="toggleFavorite('playlists', $ctrl.playlist._id)">
+        <i class="glyphicon glyphicon-heart"></i>
+      </span>
+      <span class="spacer"></span>
+      <span class="action delete" ng-if="isOwner($ctrl.playlist)" ng-click="deletePlaylist($ctrl.playlist)">
+        <i class="glyphicon glyphicon-minus"></i>
+      </span>
+    </div>
+  </div>
+  <div class="title" ng-click="playlistDetail($ctrl.playlist)">{{$ctrl.playlist.title}}</div>
+</div>
