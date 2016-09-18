@@ -1,0 +1,14 @@
+<div class="tile">
+  <div class="image" ng-style="{'background-image':'url({{$ctrl.station.image}})'}">
+    <div class="actions">
+      <span class="action favorite"
+            ng-class="{active: isFavorite($ctrl.station._id)}"
+            ng-click="toggleFavorite('stations', $ctrl.station._id)">
+        <i class="glyphicon glyphicon-heart"></i>
+      </span>
+    </div>
+  </div>
+  <div class="title" ng-click="stationDetail($ctrl.station)">{{$ctrl.station.title}}</div>
+  <div class="description"
+       ng-bind-html="$ctrl.station.description.short || $ctrl.station.description.long"></div>
+</div>

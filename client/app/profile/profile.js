@@ -1,4 +1,7 @@
 var module = angular.module('tc.profile', [
+  'tc.favorite.service',
+  'tc.user.service',
+  'tc.user.playlist.service',
   'tc.profile.controller',
   'ngRoute',
 ]);
@@ -17,7 +20,7 @@ module.config(function ($routeProvider) {
           return UserPlaylist.list();
         },
         favorite: function(Favorite) {
-          return Favorite.list();
+          return Favorite.data;
         },
       }
     });

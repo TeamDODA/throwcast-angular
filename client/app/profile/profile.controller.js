@@ -1,8 +1,4 @@
 var module = angular.module('tc.profile.controller', [
-  'tc.favorite.service',
-  'tc.podcast.service',
-  'tc.playlist.service',
-  'tc.user.service',
   'tc.user.playlist.service',
 ]);
 

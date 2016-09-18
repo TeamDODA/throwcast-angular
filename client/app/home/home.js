@@ -1,5 +1,4 @@
 var module = angular.module('tc.home', [
-  'tc.favorite.service',
   'tc.playlist.service',
   'tc.podcast.service',
   'tc.station.service',
@@ -17,9 +16,6 @@ module.config(function ($routeProvider) {
       resolve: {
         user: function(User) {
           return User.getUserAsync();
-        },
-        favorite: function(Favorite) {
-          return Favorite.list();
         },
         playlists: function(Playlist) {
           return Playlist.popular().then(function(res) {

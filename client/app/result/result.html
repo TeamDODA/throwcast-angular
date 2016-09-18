@@ -9,18 +9,9 @@
     </div>
   </div>
   <div ng-show="results.stations.length">
-  <h1>Stations Results</h1>
-    <div>
-      <div class="mainDiv" ng-repeat="station in results.stations">
-        <a href="/stations/{{station._id}}">
-          <img class="img-thumbnail" ng-src="{{station.image || defaultImage}}"/>
-        </a>
-        <ul class="list-group">
-          <li class="list-group-item title"><strong>Station:</strong> {{station.title}}</li>
-          <li class="list-group-item description"><strong>Description:</strong> {{station.description.short || station.description.long}}</li>
-        </ul>
-        <button class='btn btn-primary' ng-click="subscribe(stations[$index]._id)">Subscribe</button>
-      </div>
+    <h2>Stations</h2>
+    <div class="stations">
+      <station-tile ng-repeat="station in results.stations" station="station" />
     </div>
   </div>
   <div ng-show="results.playlists.length">

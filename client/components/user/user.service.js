@@ -1,6 +1,8 @@
-var module = angular.module('tc.user.service', []);
+var module = angular.module('tc.user.service', [
+  'tc.favorite.service',
+]);
 
-module.factory('User', function ($http, $q, API_BASE) {
+module.factory('User', function ($http, $q, API_BASE, Favorite) {
   var data = {};
   return {
     createUser: function (userCredentials) {
@@ -13,7 +15,10 @@ module.factory('User', function ($http, $q, API_BASE) {
         return $http.get(API_BASE + '/api/users/me')
           .then(function (res) {
             data.user = res.data;
-            return res.data;
+          })
+          .then(Favorite.list)
+          .then(function () {
+            return data.user;
           });
       }
     },

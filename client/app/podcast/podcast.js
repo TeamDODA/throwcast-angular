@@ -13,9 +13,6 @@ module.config(function ($routeProvider) {
         user: function(User) {
           return User.getUserAsync();
         },
-        favorite: function(Favorite) {
-          return Favorite.list();
-        },
         podcasts: function(Podcast) {
           return Podcast.list().then(function() {
             return Podcast.data;
