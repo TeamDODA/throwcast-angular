@@ -3,13 +3,13 @@
   <head>
     <title>Throwcast</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,400|Work+Sans|Titillium+Web" rel="stylesheet">
-    <!-- build:css(client) /css/vendor.min.css -->
+    <!-- build:css(client) /assets/css/vendor.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(client) /css/styles.min.css -->
+    <!-- build:css(client) /assets/css/styles.min.css -->
     <!-- injector:css -->
     <link rel="stylesheet" href="/app/account/account.css">
     <link rel="stylesheet" href="/app/home/home.css">
@@ -30,7 +30,7 @@
       <span class="podcasttitle">{{podcast.selected.title}}</span>
       <audio id="audio" ng-src="{{podcast.selected.enclosure.url}}" controls autoplay></audio>
     </div>
-    <!-- build:js(client) /js/vendor.min.js -->
+    <!-- build:js(client) /assets/js/vendor.min.js -->
     <!-- bower:js -->
     <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/lib/angular/angular.js"></script>
@@ -39,7 +39,7 @@
     <script src="/lib/lodash/lodash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:js({client,.tmp}) /js/bundle.min.js -->
+    <!-- build:js({client,.tmp}) /assets/js/bundle.min.js -->
     <!-- inject:js -->
     <script src="/app/account/account.controller.js"></script>
     <script src="/app/account/account.js"></script>
