@@ -9,6 +9,7 @@ module.factory('Playlist', function ($http, API_BASE) {
     list: function () {
       return $http.get(API_BASE + '/api/playlists/').then(function (res) {
         data.playlists = res.data;
+        return data.playlists;
       });
     },
     popular: function() {
@@ -17,6 +18,7 @@ module.factory('Playlist', function ($http, API_BASE) {
     detail: function (playlistId) {
       return $http.get(API_BASE + '/api/playlists/' + playlistId).then(function (res) {
         data.selected = res.data;
+        return data.selected;
       });
     },
     data: data,

@@ -32,6 +32,6 @@ module.config(function ($routeProvider) {
             return res.data;
           });
         },
-      }
+      },
     });
 });

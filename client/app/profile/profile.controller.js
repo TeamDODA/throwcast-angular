@@ -13,7 +13,6 @@ module.controller('ProfileController', function ($scope, $location, UserPlaylist
       delete $scope.playlist.title;
     }
   };
-  $scope.deletePlaylist = UserPlaylist.deletePlaylist;
 
   $scope.playlistDetail = function playlistDetail(playlist) {
     $location.path('/playlists/' + playlist._id);

@@ -1,3 +1,4 @@
+playlist-tile,
 podcast-tile,
 station-tile {
   flex: 1;
@@ -10,13 +11,19 @@ station-tile {
   border-width: 0 1px 1px 0;
 }
 
+playlist-tile .tile .title,
 station-tile .tile .title {
   cursor: pointer;
 }
 
+playlist-tile .tile .title:hover,
 station-tile .tile .title:hover {
   color: #f7f;
   background: #111;
+}
+
+playlist-tile .tile .image {
+  background-image: url('/assets/images/bars.jpg');
 }
 
 .tile {

@@ -10,15 +10,6 @@
   </div>
   <h2>Playlists</h2>
   <div class="playlists">
-    <div class="info-tile" ng-repeat="playlist in _.map(popular.playlists, 'playlist') | limitTo: 24">
-      <div class="image">
-        <div class="actions">
-          <span class="action">
-            <i class="glyphicon glyphicon-heart favorite"></i>
-          </span>
-        </div>
-      </div>
-      <div class="title" ng-click="playlistDetail(playlist)">{{playlist.title}}</div>
-    </div>
+    <playlist-tile ng-repeat="playlist in _.map(popular.playlists, 'playlist') | limitTo: 24" playlist="playlist" />
   </div>
 </div>

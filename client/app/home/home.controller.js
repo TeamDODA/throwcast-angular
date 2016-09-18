@@ -6,8 +6,4 @@ module.controller('HomeController', function ($scope, $location, playlists, podc
     podcasts: podcasts,
     stations: stations,
   };
-
-  $scope.playlistDetail = function playlistDetail(playlist) {
-    $location.path('/playlists/' + playlist._id);
-  };
 });

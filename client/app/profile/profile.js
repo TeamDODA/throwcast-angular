@@ -22,6 +22,6 @@ module.config(function ($routeProvider) {
         favorite: function(Favorite) {
           return Favorite.data;
         },
-      }
+      },
     });
 });

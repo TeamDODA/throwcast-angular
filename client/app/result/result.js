@@ -7,6 +7,11 @@ module.config(function ($routeProvider) {
   $routeProvider.when('/results', {
     templateUrl: 'app/result/result.html',
     controller: 'ResultController',
-    authenticate: true
+    authenticate: true,
+    resolve: {
+      user: function(User) {
+        return User.getUserAsync();
+      },
+    },
   });
 });

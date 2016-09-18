@@ -77,21 +77,6 @@ h2 {
   border-width: 1px 0 0 1px;
 }
 
-.playlists .info-tile .image {
-  background-image: url('/assets/images/bars.jpg');
-}
-
-.stations .info-tile .title,
-.playlists .info-tile .title {
-  cursor: pointer;
-}
-
-.stations .info-tile .title:hover,
-.playlists .info-tile .title:hover {
-  color: #f7f;
-  background: #111;
-}
-
 .info-tile {
   flex: 1;
   min-width: 250px;

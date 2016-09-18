@@ -3,8 +3,13 @@ var module = angular.module('tc.user.playlist.service', [
   'tc.user.service',
 ]);
 
-module.factory('UserPlaylist', function ($http, API_BASE, Playlist, User) {
+module.factory('UserPlaylist', function ($http, $q, API_BASE, Playlist, User) {
   var data = {};
+
+  function isOwner(playlist) {
+    return playlist.owner === User.data.user._id;
+  }
+
   return {
     create: function (playlist) {
       playlist.owner = User.data.user._id;
@@ -18,9 +23,13 @@ module.factory('UserPlaylist', function ($http, API_BASE, Playlist, User) {
         return data;
       });
     },
+    isOwner: isOwner,
     deletePlaylist: function (playlist) {
-      _.pull(data.playlists, playlist);
-      return $http.delete(API_BASE + '/api/playlists/' + playlist._id);
+      if (isOwner(playlist)) {
+        _.pull(data.playlists, playlist);
+        _.pull(Playlist.data.playlists, playlist);
+        return $http.delete(API_BASE + '/api/playlists/' + playlist._id);
+      }
     },
     deletePodcastFromPlaylist: function (index, playlist) {
       playlist.podcasts.splice(index, 1);

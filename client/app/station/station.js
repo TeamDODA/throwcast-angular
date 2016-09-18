@@ -1,6 +1,6 @@
 var module = angular.module('tc.station', [
-  'tc.user.service',
   'tc.station.service',
+  'tc.user.service',
   'tc.station.controller',
   'tc.station.detail.controller',
   'ngRoute',
