@@ -1,4 +1,6 @@
 var module = angular.module('tc.podcast', [
+  'tc.podcast.service',
+  'tc.user.service',
   'tc.podcast.controller',
   'ngRoute',
 ]);

@@ -1,4 +1,5 @@
 var module = angular.module('tc.result', [
+  'tc.user.service',
   'tc.result.controller',
   'ngRoute',
 ]);

@@ -2,7 +2,7 @@ var module = angular.module('tc.profile.controller', [
   'tc.user.playlist.service',
 ]);
 
-module.controller('ProfileController', function ($scope, $location, UserPlaylist, favorite, user, userPlaylists) {
+module.controller('ProfileController', function ($scope, UserPlaylist, favorite, user, userPlaylists) {
   $scope.user = user;
   $scope.favorite = favorite;
   $scope.userPlaylists = userPlaylists;
@@ -12,9 +12,5 @@ module.controller('ProfileController', function ($scope, $location, UserPlaylist
       UserPlaylist.create({ title: $scope.playlist.title });
       delete $scope.playlist.title;
     }
-  };
-
-  $scope.playlistDetail = function playlistDetail(playlist) {
-    $location.path('/playlists/' + playlist._id);
   };
 });

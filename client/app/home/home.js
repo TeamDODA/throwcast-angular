@@ -2,8 +2,8 @@ var module = angular.module('tc.home', [
   'tc.playlist.service',
   'tc.podcast.service',
   'tc.station.service',
-  'tc.home.controller',
   'tc.user.service',
+  'tc.home.controller',
   'ngRoute',
 ]);
 
