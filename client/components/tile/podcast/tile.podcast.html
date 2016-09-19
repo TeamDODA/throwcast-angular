@@ -9,12 +9,12 @@
       </span>
       <span class="spacer"></span>
       <span class="action add" ng-click="toggleDialog($ctrl.podcast)">
-        <i class="glyphicon glyphicon-plus"></i>
+        <div class="plus"></div>
       </span>
       <span class="action remove"
             ng-if="$ctrl.showRemove"
             ng-click="$ctrl.remove()">
-        <i class="glyphicon glyphicon-minus"></i>
+        <div class="minus"></div>
       </span>
       <span class="action favorite"
             ng-class="{active: isFavorite($ctrl.podcast._id)}"
