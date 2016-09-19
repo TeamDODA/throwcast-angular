@@ -30,13 +30,15 @@
       <div class="title">
         {{$ctrl.podcast.title}}
       </div>
-      <div class="close-dialog" ng-click="toggleDialog()">
-        <div class="close-button"></div>
+      <div class="close-button" ng-click="toggleDialog()">
+        <div class="cross"></div>
       </div>
     </div>
     <div class="create-playlist">
-      <input type="text" placeholder="New Playlist Name..." ng-model="title">
-      <button ng-click="createPlaylist()">Create</button>
+      <input type="text" placeholder="Create a playlist..." ng-model="title">
+      <button ng-click="createPlaylist()">
+        <i class="glyphicon glyphicon-plus"></i>
+      </button>
     </div>
     <div class="user-playlists">
       <div class="user-playlist"

@@ -8,7 +8,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #444;
+  background-color: #111;
 }
 
 .btn:focus,
@@ -72,7 +72,4 @@ h2 {
 .podcasts {
   display:flex;
   flex-wrap: wrap;
-  border-color: rgb(0, 0, 0);
-  border-style: solid;
-  border-width: 1px 0 0 1px;
 }
