@@ -187,14 +187,13 @@ playlist-tile .tile .image {
 }
 
 .tile .create-playlist {
-  margin: 10px;
+  margin: 10px 0;
   display: flex;
 }
 
 .tile .create-playlist input[type=text] {
   flex: 1;
   padding: 3px 10px;
-  margin: 0;
   color: #fff;
   background: transparent;
   border-top-left-radius: 25px;
@@ -208,9 +207,8 @@ playlist-tile .tile .image {
 }
 
 .tile .create-playlist button {
+  padding: 0 12px;
   margin-left: -1px;
-  padding: 0 6px;
-  min-width: 75px;
   color: #f7f;
   background: transparent;
   border-top-right-radius: 25px;
