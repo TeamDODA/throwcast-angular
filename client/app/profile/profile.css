@@ -1,9 +1,9 @@
-.profile-page .create-playlist {
+.profile-page .user-playlists .create-playlist {
   display: flex;
   background: #444;
 }
 
-.profile-page .create-playlist input[type=text] {
+.profile-page .user-playlists .create-playlist input[type=text] {
   margin: 5px;
   color: white;
   background: transparent;
@@ -11,7 +11,7 @@
   border: 2px solid white;
 }
 
-.profile-page .create-playlist button {
+.profile-page .user-playlists .create-playlist button {
   margin: 5px;
   padding: 0 6px;
   min-width: 125px;
@@ -23,7 +23,7 @@
   transition-duration:.2s;
 }
 
-.profile-page .create-playlist button:hover {
+.profile-page .user-playlists .create-playlist button:hover {
   cursor:pointer;
   color:#555;
   background:#f7f;
