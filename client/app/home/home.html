@@ -2,14 +2,17 @@
   <h1>Popular</h1>
   <h2>Podcasts</h2>
   <div class="podcasts">
-    <podcast-tile ng-repeat="podcast in _.map(popular.podcasts, 'podcast') | limitTo: 24" podcast="podcast" />
+    <podcast-tile ng-repeat="podcast in _.map(popular.podcasts, 'podcast') | limitTo: 24" podcast="podcast">
+    </podcast-tile>
   </div>
   <h2>Stations</h2>
   <div class="stations">
-    <station-tile ng-repeat="station in _.map(popular.stations, 'station') | limitTo: 24" station="station" />
+    <station-tile ng-repeat="station in _.map(popular.stations, 'station') | limitTo: 24" station="station">
+    </station-tile>
   </div>
   <h2>Playlists</h2>
   <div class="playlists">
-    <playlist-tile ng-repeat="playlist in _.map(popular.playlists, 'playlist') | limitTo: 24" playlist="playlist" />
+    <playlist-tile ng-repeat="playlist in _.map(popular.playlists, 'playlist') | limitTo: 24" playlist="playlist">
+    </playlist-tile>
   </div>
 </div>

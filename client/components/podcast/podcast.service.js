@@ -11,12 +11,8 @@ module.factory('Podcast', function ($http, API_BASE) {
     popular: function() {
       return $http.get(API_BASE + '/api/podcasts/favorites');
     },
-    play: function play(podcast) {
-      return data.selected = podcast;
-    },
-    stop: function stop() {
-      document.getElementById('audio').src = '';
-      delete data.selected;
+    toggleDialog: function(podcast) {
+
     },
     data: data
   };

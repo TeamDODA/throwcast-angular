@@ -29,6 +29,8 @@ playlist-tile .tile .image {
 .tile {
   flex: 1;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
 .tile .image {
@@ -49,7 +51,7 @@ playlist-tile .tile .image {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: white;
+  color: #fff;
   background: #222;
 }
 
@@ -85,14 +87,13 @@ playlist-tile .tile .image {
   align-items: center;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.75);
-  -webkit-transition: all linear 2s;
   transition: all linear 0.1s;
   cursor: pointer;
 }
 
 .tile .actions .action:hover {
   font-size: 25px;
-  color: rgb(255, 255, 255);
+  color: #fff;
 }
 
 .tile .actions .action.delete:hover {
@@ -104,7 +105,7 @@ playlist-tile .tile .image {
 }
 
 .tile .actions .action.stop:hover {
-  color: rgb(255, 255, 255);
+  color: #fff;
 }
 
 .tile .actions .action.stop {
@@ -113,4 +114,174 @@ playlist-tile .tile .image {
 
 .tile .actions .action.favorite.active {
   color: #f7f;
+}
+
+.tile .playlist-dialog {
+  background: rgba(0, 0, 0, 0.95);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  transition: all linear 0.1s;
+}
+
+.tile .playlist-dialog.open {
+  height: 100%;
+  border: 2px solid #ccc;
+}
+
+.tile .playlist-dialog .top-header {
+  display: flex;
+}
+
+.tile .playlist-dialog .title {
+  padding: 10px;
+  font-size: 16px;
+  font-family: Titillium Web, sans-serif;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+  background: #222;
+}
+
+.tile .playlist-dialog .close-dialog {
+  position: relative;
+  height: 42px;
+  min-width: 42px;
+  background: #222;
+  cursor: pointer;
+}
+
+.close-button {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  opacity: 0.3;
+  transition: all linear 0.1s;
+}
+
+.close-button:hover {
+  opacity: 1;
+}
+
+.close-button:before,
+.close-button:after {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  content: '';
+  height: 22px;
+  width: 2px;
+  background-color: white;
+}
+
+.close-button:before {
+  transform: rotate(45deg);
+}
+
+.close-button:after {
+  transform: rotate(-45deg);
+}
+
+.tile .create-playlist {
+  margin: 10px;
+  display: flex;
+}
+
+.tile .create-playlist input[type=text] {
+  flex: 1;
+  padding: 3px 10px;
+  margin: 0;
+  color: #fff;
+  background: transparent;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: 2px solid #fff;
+  border-right: 0;
+}
+
+.tile .create-playlist input[type=text]:focus {
+  outline: none;
+}
+
+.tile .create-playlist button {
+  margin-left: -1px;
+  padding: 0 6px;
+  min-width: 75px;
+  color: #f7f;
+  background: transparent;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border: 2px solid #fff;
+  border-left: 0;
+  transition: all linear 0.1s;
+}
+
+.tile .create-playlist button:hover {
+  cursor: pointer;
+  color: #222;
+  background: #f7f;
+  border-color: #f7f;
+}
+
+.tile .playlist-dialog .user-playlists {
+  flex: 1;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.tile .playlist-dialog .user-playlist {
+  flex: 1;
+  display: flex;
+  transition: all linear 0.1s;
+}
+
+.tile .playlist-dialog .user-playlist-title {
+  flex: 1;
+  padding: 10px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile .playlist-dialog .user-playlist:hover {
+  color: #fff;
+  cursor: pointer;
+  background: #222;
+}
+
+.tile .user-playlist-podcast-toggle {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile .user-playlist:hover .checkmark {
+  transform: scale(1.5,1.5);
+}
+
+.tile .checkmark {
+  display: inline-block;
+}
+
+.tile .checkmark:after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 12px;
+  border: solid #555;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(0, -5px);
+}
+
+.tile .active.checkmark:after {
+  border: solid #f7f;
+  border-width: 0 2px 2px 0;
 }
