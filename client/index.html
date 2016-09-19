@@ -24,9 +24,9 @@
   <body ng-app="throwcast">
     <tc-nav></tc-nav>
     <div ng-view id="view"></div>
-    <div ng-cloak ng-controller="PlayerController" ng-show="podcast.selected" class="audioplayer">
-      <span class="podcasttitle">{{podcast.selected.title}}</span>
-      <audio id="audio" ng-src="{{podcast.selected.enclosure.url}}" controls autoplay></audio>
+    <div ng-cloak ng-controller="PlayerController" ng-show="player.selected" class="audioplayer">
+      <span class="podcasttitle">{{player.selected.title}}</span>
+      <audio id="audio" ng-src="{{player.selected.enclosure.url}}" controls autoplay></audio>
     </div>
     <!-- build:js(client) /assets/js/vendor.min.js -->
     <!-- bower:js -->
@@ -65,6 +65,7 @@
     <script src="/components/nav/nav.directive.js"></script>
     <script src="/components/nav/nav.js"></script>
     <script src="/components/player/player.controller.js"></script>
+    <script src="/components/player/player.service.js"></script>
     <script src="/components/playlist/playlist.service.js"></script>
     <script src="/components/podcast/podcast.service.js"></script>
     <script src="/components/search/search.service.js"></script>

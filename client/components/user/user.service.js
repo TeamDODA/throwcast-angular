@@ -22,11 +22,6 @@ module.factory('User', function ($http, $q, API_BASE, Favorite) {
           });
       }
     },
-    updateSubscribtion: function (subscriptions) {
-      return $http.put(API_BASE + '/api/users/subscriptions/', subscriptions).then(function (res) {
-        data.user.subscriptions = res.data.subscriptions;
-      });
-    },
     data: data,
   };
 });

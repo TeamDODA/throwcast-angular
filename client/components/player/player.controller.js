@@ -1,7 +1,7 @@
 var module = angular.module('tc.player.controller', [
-  'tc.podcast.service',
+  'tc.player.service',
 ]);
 
-module.controller('PlayerController', function PlayerController($scope, Podcast) {
-  $scope.podcast = Podcast.data;
+module.controller('PlayerController', function PlayerController($scope, Player) {
+  $scope.player = Player.data;
 });

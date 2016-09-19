@@ -1,15 +1,20 @@
 <div class="tile">
   <div class="image" ng-style="{'background-image':'url({{$ctrl.podcast.image}})'}">
     <div class="actions">
-      <span class="action play" ng-if="!isPlaying($ctrl.podcast)" ng-click="play($ctrl.podcast)">
+      <span class="action play" ng-if="!isSelected($ctrl.podcast)" ng-click="play($ctrl.podcast)">
         <i class="glyphicon glyphicon-play"></i>
       </span>
-      <span class="action stop" ng-if="isPlaying($ctrl.podcast)" ng-click="stop()">
+      <span class="action stop" ng-if="isSelected($ctrl.podcast)" ng-click="stop()">
         <i class="glyphicon glyphicon-stop"></i>
       </span>
       <span class="spacer"></span>
-      <span class="action add">
+      <span class="action add" ng-click="toggleDialog($ctrl.podcast)">
         <i class="glyphicon glyphicon-plus"></i>
+      </span>
+      <span class="action remove"
+            ng-if="$ctrl.showRemove"
+            ng-click="$ctrl.remove()">
+        <i class="glyphicon glyphicon-minus"></i>
       </span>
       <span class="action favorite"
             ng-class="{active: isFavorite($ctrl.podcast._id)}"
@@ -20,4 +25,28 @@
   </div>
   <div class="title">{{$ctrl.podcast.title}}</div>
   <div class="description" ng-bind-html="$ctrl.podcast.description"></div>
+  <div class="playlist-dialog" ng-class="{open: isDialogOpen($ctrl.podcast)}">
+    <div class="top-header">
+      <div class="title">
+        {{$ctrl.podcast.title}}
+      </div>
+      <div class="close-dialog" ng-click="toggleDialog()">
+        <div class="close-button"></div>
+      </div>
+    </div>
+    <div class="create-playlist">
+      <input type="text" placeholder="New Playlist Name..." ng-model="title">
+      <button ng-click="createPlaylist()">Create</button>
+    </div>
+    <div class="user-playlists">
+      <div class="user-playlist"
+           ng-repeat="playlist in userPlaylists.playlists | orderBy:'-'"
+           ng-click="updatePlaylist(playlist, $ctrl.podcast)">
+        <div class="user-playlist-title">{{playlist.title}}</div>
+        <div class="user-playlist-podcast-toggle">
+          <span class="checkmark" ng-class="{active: hasPodcast(playlist, $ctrl.podcast)}"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

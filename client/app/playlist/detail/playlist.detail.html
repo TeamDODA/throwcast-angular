@@ -1,6 +1,10 @@
 <div class="playlist-details-page">
   <h1>{{playlist.title}}</h1>
   <div class="podcasts">
-    <podcast-tile ng-repeat="podcast in playlist.podcasts" podcast="podcast" />
+    <podcast-tile ng-repeat="podcast in playlist.podcasts"
+                  podcast="podcast"
+                  show-remove="isPlaylistOwner"
+                  on-remove="removeFromPlaylist(podcast)">
+    </podcast-tile>
   </div>
 </div>
